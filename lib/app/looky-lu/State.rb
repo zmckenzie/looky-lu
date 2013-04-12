@@ -1,6 +1,9 @@
 module LookyLu
   class State < ActiveRecord::Base
-    #include ActiveModel
-    #extend ActiveModel::Callbacks
+
+    attr_accessible :name, :abbreviation
+
+    validates :name, uniqueness: {scope: :abbreviation}
+
   end
 end
