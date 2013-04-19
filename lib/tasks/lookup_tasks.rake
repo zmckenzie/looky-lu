@@ -10,7 +10,8 @@ namespace :lookylu do
 
   namespace :populate do
     task :states do
-      LookyLu::Generators::Data.populate LookyLu::State, States.united_states
+      data_generator = LookyLu::Generators::Data.new
+      data_generator.populate State, LookyLu::States.united_states
     end
   end
 
