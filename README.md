@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/agapered/looky-lu.png?branch=master)](https://travis-ci.org/agapered/looky-lu)
+
 ## What is it? ##
 
 looky-lu will generate standard look up data abilities for your rails application
