@@ -6,7 +6,6 @@ require 'app/models/State'
 describe LookyLu::Generators::Data do
 
   before(:each) do
-    LookyLu::Generators::Data.any_instance.stub(:db_config).and_return(database_config)
     @data_gen = LookyLu::Generators::Data.new
   end
 
@@ -25,7 +24,8 @@ describe LookyLu::Generators::Data do
   end
 
   it 'should pull the database configs' do
-    pending 'How to test this?'
+    Rails.should_receive(:configuration).and_return(double('configuration', database_configuration: {}))
+    @data_gen.db_config
   end
 
   it 'should connect to the database' do
@@ -33,6 +33,10 @@ describe LookyLu::Generators::Data do
   end
 
   describe 'populate' do
+
+    before(:each) do
+      LookyLu::Generators::Data.any_instance.stub(:db_config).and_return(database_config)
+    end
 
     after(:each) do
       load_db
