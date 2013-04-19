@@ -1,6 +1,6 @@
-desc 'make migrations'
 
 namespace :lookylu do
+  desc 'build the needed migrations'
   namespace :build do
     task :states do
       migrate = LookyLu::Generators::Migration.new
@@ -8,6 +8,7 @@ namespace :lookylu do
     end
   end
 
+  desc 'populate the database with some data'
   namespace :populate do
     task :states do
       data_generator = LookyLu::Generators::Data.new
