@@ -2,7 +2,7 @@ require 'rails/generators'
 
 module LookyLu
   module Generators
-    class Migration < ::Rails::Generators::Base
+    class LookyluGenerator < ::Rails::Generators::Base
       include Rails::Generators::Migration
       source_root File.expand_path('../../db/migrations', __FILE__)
       desc "add the migrations"
@@ -16,8 +16,8 @@ module LookyLu
         @prev_migration_nr.to_s
       end
 
-      def copy file_name
-        migration_template "#{file_name}.rb", "db/migrate/#{file_name}.rb"
+      def copy_migration file_name, custom_name
+        migration_template "#{file_name}.rb", "db/migrate/looky_lu_create_#{custom_name}.rb"
       end
 
     end

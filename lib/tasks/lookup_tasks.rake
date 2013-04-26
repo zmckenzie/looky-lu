@@ -2,9 +2,13 @@
 namespace :lookylu do
   desc 'build the needed migrations'
   namespace :build do
-    task :states do
-      migrate = LookyLu::Generators::Migration.new
-      migrate.copy('create_states')
+    task :states, :custom_name do |t, args|
+
+      custom_name = args[:custom_name]
+      custom_name = 'states' unless custom_name
+
+      migrate = LookyLu::Generators::LookyluGenerator.new
+      migrate.copy_migration 'create_states', custom_name
     end
   end
 
