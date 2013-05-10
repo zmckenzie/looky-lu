@@ -17,9 +17,15 @@ This gem will allow you to easily add that kind of data to your project
 To create and populate a State model object
 
 ```console
-rails g lookylu:state [state]
+rails g lookylu:state
 rake db:migrate
-rails g lookylu:data State
+ rails g lookylu:state_data State
+```
+
+## Additional Options ##
+
+```console
+rails g lookylu:state -h
 ```
 
 

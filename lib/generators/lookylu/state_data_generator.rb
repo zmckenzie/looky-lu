@@ -3,7 +3,7 @@ require 'generators/lookylu/base_generator'
 
 module Lookylu
   module Generators
-    class DataGenerator < Lookylu::Generators::BaseGenerator
+    class StateDataGenerator < Lookylu::Generators::BaseGenerator
 
       def populate_data
         connect_to_db

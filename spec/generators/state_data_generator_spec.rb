@@ -1,12 +1,12 @@
 require 'spec_helper'
-require 'generators/lookylu/data_generator'
+require 'generators/lookylu/state_data_generator'
 require 'data/lu/states'
 require 'app/models/State'
 
-describe Lookylu::Generators::DataGenerator do
+describe Lookylu::Generators::StateDataGenerator do
 
   before(:each) do
-    @gen = Lookylu::Generators::DataGenerator.new
+    @gen = Lookylu::Generators::StateDataGenerator.new
     @gen.object_name = 'State'
   end
 
@@ -22,7 +22,7 @@ describe Lookylu::Generators::DataGenerator do
   describe 'populate data' do
 
     before(:each) do
-      Lookylu::Generators::DataGenerator.any_instance.stub(:db_config).and_return(database_config)
+      Lookylu::Generators::StateDataGenerator.any_instance.stub(:db_config).and_return(database_config)
     end
 
     after(:each) do
