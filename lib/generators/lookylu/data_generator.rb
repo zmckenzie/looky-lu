@@ -17,7 +17,7 @@ module Lookylu
           end
           puts "There are now #{pluralize(class_object.count, model_name)}"
         rescue => e
-          raise "Could not create object for #{object_name}"
+          raise "Could not find object for #{model_name}"
         end
 
       end

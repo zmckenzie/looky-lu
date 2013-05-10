@@ -8,4 +8,8 @@ ActiveRecord::Schema.define do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table 'no_models', :force => true do |t|
+    t.datetime "created_at", null: false
+  end
+
 end

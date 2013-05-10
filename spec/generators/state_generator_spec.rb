@@ -5,4 +5,27 @@ require 'app/models/State'
 
 describe Lookylu::Generators::StateGenerator do
 
+  before(:each) do
+    @gen = Lookylu::Generators::StateGenerator.new
+    @gen.object_name = 'ObjectName'
+  end
+  #.send(:method_name, args)
+
+  it 'should get model location' do
+    @gen.send(:model_location).should == "app/models/ObjectName.rb"
+  end
+
+  it 'should get migration_location' do
+    version = '12345'
+    @gen.send(:migration_location, version).should == "db/migrate/#{version}_lookylu_create_object_names.rb"
+  end
+
+  it 'should build next migration number' do
+    time = Time.new('2013-05-10 19:58:31 +0000')
+    Time.should_receive(:now).and_return(time)
+    @gen.send(:next_migration_number).should == 20130101000000
+  end
+
+
+
 end

@@ -27,12 +27,7 @@ module Lookylu
       private
 
       def next_migration_number
-        unless @prev_migration_nr
-          @prev_migration_nr = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
-        else
-          @prev_migration_nr += 1
-        end
-        @prev_migration_nr.to_s
+        Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
       end
 
       def migration_location version
