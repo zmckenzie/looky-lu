@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'generators/lookylu/state_generator'
 require 'data/lu/states'
 require 'app/models/State'
+require 'fileutils'
+
 
 describe Lookylu::Generators::StateGenerator do
 
@@ -24,6 +26,26 @@ describe Lookylu::Generators::StateGenerator do
     time = Time.new('2013-05-10 19:58:31 +0000')
     Time.should_receive(:now).and_return(time)
     @gen.send(:next_migration_number).should == 20130101000000
+  end
+
+  describe 'file create' do
+
+    after(:each) do
+      FileUtils.rm_rf 'spec/testing'
+    end
+
+    it 'should generate model file' do
+      @gen.stub(:model_location).and_return("spec/testing/#{@gen.model_name}.rb")
+      @gen.generate_model
+      File.exists?("spec/testing/#{@gen.model_name}.rb").should be true
+    end
+
+    it 'should generate the migration file' do
+      @gen.stub(:migration_location).and_return("spec/testing/#{20130101000000}_lookylu_create_#{@gen.plural_name}.rb")
+      @gen.generate_migration
+      File.exists?("spec/testing/#{20130101000000}_lookylu_create_#{@gen.plural_name}.rb").should be true
+    end
+
   end
 
 
