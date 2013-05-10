@@ -1,15 +1,17 @@
-ENV["RAILS_ENV"] = 'test'
-
 require 'simplecov'
 require 'coveralls'
-
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+Coveralls.wear!('rails')
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
 SimpleCov.start do
   add_filter "/spec/"
 end
 
-require 'active_record'
+ENV["RAILS_ENV"] = 'test'
 
+require 'active_record'
 require 'database_cleaner'
 require 'rails'
 require 'rails/all'
