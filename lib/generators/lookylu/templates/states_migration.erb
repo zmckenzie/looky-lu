@@ -1,0 +1,10 @@
+class LookyluCreate<%= plural_model_name %> < ActiveRecord::Migration
+  def change
+    create_table :<%= plural_name %> do |t|
+      t.string :name
+      t.string :abbreviation
+
+      t.timestamps
+    end
+  end
+end

@@ -4,6 +4,8 @@ require 'active_record'
 require 'simplecov'
 require 'database_cleaner'
 require 'rails'
+require 'rails/all'
+require 'rails/generators'
 require "rails/test_help"
 
 ActiveRecord::Base.establish_connection(YAML.load_file("spec/support/database.yml")[ENV['RAILS_ENV']])
