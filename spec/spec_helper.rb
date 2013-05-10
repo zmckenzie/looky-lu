@@ -1,19 +1,25 @@
 ENV["RAILS_ENV"] = 'test'
 
-require 'active_record'
 require 'simplecov'
+require 'coveralls'
+
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter "/spec/"
+end
+
+require 'active_record'
+
 require 'database_cleaner'
 require 'rails'
 require 'rails/all'
 require 'rails/generators'
 require "rails/test_help"
 
+
 ActiveRecord::Base.establish_connection(YAML.load_file("spec/support/database.yml")[ENV['RAILS_ENV']])
 load 'spec/support/schema.rb'
 
-SimpleCov.start do
-  add_filter "/spec/"
-end
 
 if ENV['RCOV'] == 'true'
   require 'simplecov-rcov'
