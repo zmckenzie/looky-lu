@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/agapered/looky-lu.png?branch=master)](https://travis-ci.org/agapered/looky-lu)
+[![Coverage Status](https://coveralls.io/repos/agapered/looky-lu/badge.png)](https://coveralls.io/r/agapered/looky-lu)
+
 
 ## What is it? ##
 

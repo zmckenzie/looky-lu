@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "activerecord", "~> 3.0"
   spec.add_development_dependency "sqlite3-ruby"
   spec.add_development_dependency 'database_cleaner'
+  spec.add_development_dependency 'coveralls'
 
   spec.add_dependency 'rails'
   spec.add_dependency 'activerecord'
