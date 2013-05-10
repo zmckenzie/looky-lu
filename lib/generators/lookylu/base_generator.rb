@@ -4,6 +4,8 @@ module Lookylu
   module Generators
     class BaseGenerator < Rails::Generators::Base
 
+      argument :object_name, type: :string, default: 'state'
+
       def file_name
         object_name.underscore
       end

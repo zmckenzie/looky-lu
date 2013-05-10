@@ -5,8 +5,6 @@ module Lookylu
   module Generators
     class DataGenerator < Lookylu::Generators::BaseGenerator
 
-      argument :object_name, type: :string
-
       def populate_data
         connect_to_db
         unless ActiveRecord::Base.connection.table_exists? plural_name

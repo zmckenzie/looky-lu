@@ -7,7 +7,6 @@ module Lookylu
       source_root File.expand_path('../templates', __FILE__)
       desc 'Build the state LU items'
 
-      argument :object_name, type: :string, default: 'state'
       class_option :model, :type => :boolean, :default => true, :desc => "Generate a default model object."
 
 
