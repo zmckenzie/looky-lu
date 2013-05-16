@@ -37,11 +37,34 @@ describe Lookylu::Generators::StateDataGenerator do
         to raise_error "Table #{@gen.plural_name} does not exist. Please build the needed migration and migrate your database"
     end
 
-    it 'should add object data' do
-      Object.any_instance.should_receive(:puts).with("There are now #{@gen.pluralize(LookyLu::States.united_states.count, @gen.plural_model_name)}")
+    context 'canada' do
+      it 'should add object data' do
+        Object.any_instance.should_receive(:puts).with("There are now #{@gen.pluralize(LookyLu::States.canada.count, @gen.plural_model_name)}")
 
-      @gen.populate_data
-      State.count.should == LookyLu::States.united_states.count
+        @gen.country_name = 'CA'
+        @gen.populate_data
+        State.count.should == LookyLu::States.canada.count
+      end
+    end
+
+    context 'US' do
+      it 'should add object data' do
+        Object.any_instance.should_receive(:puts).with("There are now #{@gen.pluralize(LookyLu::States.united_states.count, @gen.plural_model_name)}")
+
+        @gen.country_name = 'US'
+        @gen.populate_data
+        State.count.should == LookyLu::States.united_states.count
+      end
+    end
+
+    context 'all' do
+      it 'should add object data' do
+        Object.any_instance.should_receive(:puts).with("There are now #{@gen.pluralize(LookyLu::States.all.count, @gen.plural_model_name)}")
+
+        @gen.country_name = 'all'
+        @gen.populate_data
+        State.count.should == LookyLu::States.all.count
+      end
     end
 
     it 'should not fail if object does not exist' do

@@ -4,6 +4,7 @@ require 'generators/lookylu/base_generator'
 module Lookylu
   module Generators
     class StateDataGenerator < Lookylu::Generators::BaseGenerator
+      argument :country_name, :type => :string, :default => 'US', :desc => "Choose a country (US or Canada)."
 
       def populate_data
         connect_to_db
@@ -12,9 +13,11 @@ module Lookylu
         end
         begin
           class_object = eval(object_name)
-          LookyLu::States.united_states.each do |data|
-            class_object.where(data).first_or_create
+
+          LookyLu::States.from_country(country_name).each do |data|
+              class_object.where(data).first_or_create
           end
+
           puts "There are now #{pluralize(class_object.count, model_name)}"
         rescue => e
           raise "Could not find object for #{model_name}"
@@ -24,13 +27,13 @@ module Lookylu
 
       private
 
-      def connect_to_db
-        ActiveRecord::Base.establish_connection db_config
-      end
+        def connect_to_db
+          ActiveRecord::Base.establish_connection db_config
+        end
 
-      def db_config
-        Rails.configuration.database_configuration[::Rails.env]
-      end
+        def db_config
+          Rails.configuration.database_configuration[::Rails.env]
+        end
 
     end
   end

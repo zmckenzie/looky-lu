@@ -1,6 +1,37 @@
 module LookyLu
   class States
 
+    def self.from_country(country_name = 'US')
+      case country_name.downcase
+      when 'all'
+        self.all
+      when 'us'
+        self.united_states
+      when 'ca'
+        self.canada
+      end
+    end
+
+    def self.all
+      ret = self.canada + self.united_states
+      ret.sort_by {|x| x[:name]}
+    end
+
+    def self.canada
+      [
+        {name: 'Alberta', abbreviation: 'AB'},
+        {name: 'British Columbia', abbreviation: 'BC'},
+        {name: 'Manitoba', abbreviation: 'MB'},
+        {name: 'New Brunswick', abbreviation: 'NB'},
+        {name: 'Newfoundland and Labrador', abbreviation: 'NL'},
+        {name: 'Nova Scotia', abbreviation: 'NS'},
+        {name: 'Ontario', abbreviation: 'ON'},
+        {name: 'Prince Edward Island', abbreviation: 'PE'},
+        {name: 'Quebec', abbreviation: 'QC'},
+        {name: 'Saskatchewan', abbreviation: 'SK'}
+      ]
+    end
+
     def self.united_states
       [
         {name: 'Alabama', abbreviation: 'AL'},

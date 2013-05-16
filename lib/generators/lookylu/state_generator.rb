@@ -9,7 +9,6 @@ module Lookylu
 
       class_option :model, :type => :boolean, :default => true, :desc => "Generate a default model object."
 
-
       def generate_migration
         if Dir.glob(migration_location('*')).empty?
           template "states_migration.erb", migration_location(next_migration_number)
@@ -26,17 +25,17 @@ module Lookylu
 
       private
 
-      def next_migration_number
-        Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
-      end
+        def next_migration_number
+          Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
+        end
 
-      def migration_location version
-        "db/migrate/#{version}_lookylu_create_#{plural_name}.rb"
-      end
+        def migration_location version
+          "db/migrate/#{version}_lookylu_create_#{plural_name}.rb"
+        end
 
-      def model_location
-        "app/models/#{model_name}.rb"
-      end
+        def model_location
+          "app/models/#{model_name}.rb"
+        end
 
     end
   end
