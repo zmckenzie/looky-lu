@@ -5,10 +5,10 @@ module LookyLu
       case country_name.downcase
       when 'all'
         self.all
-      when 'us'
-        self.united_states
       when 'ca'
         self.canada
+      else
+        self.united_states
       end
     end
 
