@@ -4,7 +4,7 @@ require 'generators/lookylu/base_generator'
 module Lookylu
   module Generators
     class StateDataGenerator < Lookylu::Generators::BaseGenerator
-      argument :country_name, :type => :string, :default => 'US', :desc => "Choose a country (US or Canada)."
+      argument :country_name, :type => :string, :default => 'US', :desc => "Choose a country: us(United States), ca(Canada), or all."
 
       def populate_data
         connect_to_db
