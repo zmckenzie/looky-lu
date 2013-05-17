@@ -6,7 +6,7 @@ describe State do
 
   describe 'scopes' do
     before(:each) do
-      LookyLu::States.united_states.take(10).each do |s|
+      LookyLu::States.from_country('united_states').take(10).each do |s|
         State.where(s).first_or_create
       end
     end

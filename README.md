@@ -2,31 +2,48 @@
 [![Coverage Status](https://coveralls.io/repos/agapered/looky-lu/badge.png?branch=master)](https://coveralls.io/r/agapered/looky-lu?branch=master)
 
 
-## What is it? ##
-
-looky-lu will generate standard look up data abilities for your rails application
-
 ## What is it for? ##
 
-Recently we went through the pain of having to create a look up table for the different states in the United States.
+LookyLu gives you easy ability to generate an ActiveRecord object for lookup data, as well as the ability to populate that object with data.
 
-This gem will allow you to easily add that kind of data to your project
+For example, you need a State object that is an LU table for all of the states in the United States, then this gem is perfect for you.
 
 ## How to use it ##
 
-To create and populate a State model object
+Using my example above of needing a State object:
 
+Generate the ActiveRecord model and the needed migration
 ```
 rails g lookylu:state
+```
+
+Migrate your database 
+```
 rake db:migrate
-rails g lookylu:state_data State
+```
+
+Populate the database with the 50 stats plus D.C.
+```
+rails g lookylu:state_data State united_states
 ```
 
 ## Additional Options ##
 
+For generating the Model and migration
 ```
 rails g lookylu:state -h
 ```
+
+For generating the LU data
+```
+rails g lookylu:state_data -h
+```
+
+## Current LU Data Available ##
+
+* ### State ###
+    * United States
+    * Canada
 
 
 ## Who are you? ##

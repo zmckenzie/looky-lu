@@ -3,22 +3,20 @@ require 'data/lu/states'
 
 describe LookyLu::States do
 
-  describe '#canada' do
-    it 'should retun all 10 provinces' do
-      LookyLu::States.canada.count.should == 10
-    end
-  end
+  describe 'from country' do
 
-  describe '#united_states' do
-    it 'should return all 50 states and DC' do
-      LookyLu::States.united_states.count.should == 51
+    it 'should pull only united states' do
+      LookyLu::States.from_country('united_states').count.should == 51
     end
-  end
 
-  describe '#all' do
-    it 'should return all provinces and states' do 
-      LookyLu::States.all.count.should == 61
+    it 'should pull only canada' do
+      LookyLu::States.from_country('canada').count.should == 10
     end
+
+    it 'should pull all' do
+      LookyLu::States.from_country('all').count.should == 61
+    end
+
   end
 
 end
