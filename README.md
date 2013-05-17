@@ -12,6 +12,15 @@ For example, you need a State object that is an LU table for all of the states i
 
 Using my example above of needing a State object:
 
+Install LookyLu
+```
+gem install looky-lu
+```
+Or add to your gemfile
+```
+gem 'looky-lu'
+```
+
 Generate the ActiveRecord model and the needed migration
 ```
 rails g lookylu:state
