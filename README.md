@@ -41,7 +41,7 @@ rails g lookylu:state_data -h
 
 ## Current LU Data Available ##
 
-* ### State ###
+* State
     * United States
     * Canada
 
