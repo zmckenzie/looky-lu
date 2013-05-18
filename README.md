@@ -31,7 +31,7 @@ Migrate your database
 rake db:migrate
 ```
 
-Populate the database with the 50 stats plus D.C.
+Populate the database with the 50 states plus D.C.
 ```
 rails g lookylu:state_data State united_states
 ```
